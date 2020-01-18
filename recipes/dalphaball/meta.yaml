@@ -1,0 +1,25 @@
+package:
+  name: dalphaball
+
+requirements:
+  build:
+    - python
+    - {{ compiler('c') }}
+    - make
+    - gfortran_linux-64
+    - gmp
+
+  host:
+    - libgfortran-ng
+    - gmp
+
+  run:
+    - libgfortran-ng
+    - gmp
+
+# test:
+#  commands:
+#    - dalphaball
+
+about:
+  home: http://rosettacommons.org
