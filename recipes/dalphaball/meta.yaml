@@ -6,7 +6,7 @@ requirements:
     - python
     - {{ compiler('c') }}
     - make
-    - gfortran_linux-64
+    - gfortran_{{ target_platform }}
     - gmp
 
   host:

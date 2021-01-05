@@ -7,8 +7,27 @@ the DAlphaBall executable.
 ## TLDR
 
 1. Install `docker`.
-2. Use `dalphaball_docker_build.sh <output dir>` to build the `dalphaball` 
+2. Use `dalphaball_docker_build.sh <output dir>` to build the `dalphaball`
    conda package.
+
+## Building on/for macOS
+The c std lib that can be used with conda build is a little older, so you'll
+need to set up an appropriate build environment. The Mac OS X 10.10 SDK is
+compatible and can be configured to work with conda build with the following
+steps:
+
+1. Get [MacOSX10.10.sdk](https://github.com/phracker/MacOSX-SDKs/releases/download/10.15/MacOSX10.10.sdk.tar.xz)
+2. Move the SDK to `/opt` with `tar xf ~/Downloads/MacOSX10.10.sdk.tar.xz -C /opt`
+3. Add the following to `~/.condarc`:
+```
+conda_build:
+  config_file: ~/.conda/conda_build_config.yaml
+```
+4. Create `~/.conda/conda_build_config.yaml` if it doesn't exist and add:
+```
+CONDA_BUILD_SYSROOT:
+  - /opt/MacOSX10.10.sdk # [osx]
+```
 
 ## Build Layout
 
@@ -41,6 +60,6 @@ build:
     script.
 
     Eg.
-    `/home/conda/root/dalphaball/build dalphaball --croot /home/conda/build` 
+    `/home/conda/root/dalphaball/build dalphaball --croot /home/conda/build`
     ->
     `bash -c 'cd /home/conda/build/dalphaball_12345 && ./conda_build.sh'`
