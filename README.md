@@ -28,6 +28,8 @@ conda_build:
 CONDA_BUILD_SYSROOT:
   - /opt/MacOSX10.10.sdk # [osx]
 ```
+5. Use `build dalphaball --croot=<output dir>` to build the `dalphaball`
+   conda package.
 
 ## Build Layout
 
