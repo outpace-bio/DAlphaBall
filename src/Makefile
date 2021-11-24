@@ -5,6 +5,7 @@ CPU=gcc
 NAMEFUL1=$(DIR)/$(NAME1).$(CPU)
 FFLAGS =-c -O3 -x f77-cpp-input -fsecond-underscore
 LIBRARIES=-lgmp -lm -lgfortran
+LD=$(CC) # use c compiler as front end for linker
 
 .c.o :
 	$(CC) -c -O3 $(CFLAGS) $(INCS) $<
