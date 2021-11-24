@@ -1,1 +1,3 @@
 meta.version.yaml
+src/*.o
+src/*.gcc
