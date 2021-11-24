@@ -1,0 +1,20 @@
+package:
+  name: dalphaball
+  version: 0.1.0
+
+source:
+  path: ../src
+
+build:
+  number: 0
+  script: make; mkdir -p $PREFIX/bin; cp DAlphaBall.gcc $PREFIX/bin/dalphaball
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}<9.0
+  host:
+    - gmp
+
+about:
+  home: https://simtk.org/projects/alphamol

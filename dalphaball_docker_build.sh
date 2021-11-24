@@ -18,7 +18,7 @@ UPLOAD_PACKAGES=False
 
 # Conda-build copies work tree into build root, so build root must be outside
 # tree to avoid recursive copy.
-case $(readlink -f $(realpath $ARTIFACTS))/ 
+case $(readlink -f $(realpath $ARTIFACTS))/
   in $(readlink -f $ROOT)/*)
     echo "conda-build output root: '$ARTIFACTS' can not fall within working tree: '$ROOT'" && usage;
 esac
@@ -37,7 +37,7 @@ if hash docker-machine 2> /dev/null && docker-machine active > /dev/null; then
     export HOST_USER_ID=$(docker-machine ssh $(docker-machine active) id -u)
 fi
 
-docker build $ROOT/linux-anvil -f $ROOT/linux-anvil/xenial/Dockerfile 
+docker build $ROOT/linux-anvil -f $ROOT/linux-anvil/xenial/Dockerfile
 
 DOCKER_IMAGE=$(docker build $ROOT/linux-anvil -f $ROOT/linux-anvil/xenial/Dockerfile -q)
 
@@ -53,4 +53,4 @@ docker run \
            -e HOST_USER_ID=$HOST_USER_ID \
            -e UPLOAD_PACKAGES=$UPLOAD_PACKAGES \
            $DOCKER_IMAGE \
-           /home/conda/root/dalphaball/build dalphaball --croot /home/conda/build 
+           bash -c 'cd /home/conda/root/dalphaball && conda build recipes --croot /home/conda/build'

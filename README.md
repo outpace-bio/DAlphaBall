@@ -28,23 +28,22 @@ conda_build:
 CONDA_BUILD_SYSROOT:
   - /opt/MacOSX10.10.sdk # [osx]
 ```
-5. Use `build dalphaball --croot=<output dir>` to build the `dalphaball`
+5. Use `conda build recipes --croot=<output dir>` to build the `dalphaball`
    conda package.
 
 ## Build Layout
 
 These components are roughly organized into layers:
 
-- `recipes`: Conda recipe definitions with (a) dependency information and
-    (b) basic build scripts.
-
-- `build`: A wrapper around conda-build rendering version information for
-  a given recipe with the current tree's version information.
+- `recipes`: Conda recipe definitions with dependency information and build steps.
 
 - `dalphaball_docker_build.sh`: Script using minimal build
   environment defined in linux-anvil to build broadly compatible linux
   conda packages. This should be considered the primary entrypoint to
   generate conda packages.
+
+- Use `conda build recipes --croot=<output dir>` to build the `dalphaball`
+  conda package in your current environment.
 
 ## Build Debugging
 
@@ -62,6 +61,6 @@ build:
     script.
 
     Eg.
-    `/home/conda/root/dalphaball/build dalphaball --croot /home/conda/build`
+    `bash -c 'cd /home/conda/root/dalphaball && conda build recipes --croot /home/conda/build'`
     ->
     `bash -c 'cd /home/conda/build/dalphaball_12345 && ./conda_build.sh'`
