@@ -3,8 +3,8 @@ DIR=.
 
 CPU=gcc
 NAMEFUL1=$(DIR)/$(NAME1).$(CPU)
-FFLAGS = -c -O3 -x f77-cpp-input -fsecond-underscore
-LIBRARIES= -lgmp -lm -lgfortran
+FFLAGS =-c -O3 -x f77-cpp-input -fsecond-underscore
+LIBRARIES=-lgmp -lm -lgfortran
 
 .c.o :
 	$(CC) -c -O3 $(CFLAGS) $(INCS) $<
