@@ -500,7 +500,7 @@ extern "C" {
 void	F77Name2(vertex_attach_gmp)(int *ia, int *ib, int *testa, int *testb)
 
 {
-	int idx_a1,idx_b1;
+	int idx_a1,idx_b1,idx_a2,idx_b2;
 	int i;
 
 	(*testa = 0);
@@ -509,15 +509,17 @@ void	F77Name2(vertex_attach_gmp)(int *ia, int *ib, int *testa, int *testb)
 	idx_a1 = (*ia)*3 -3; 
 	idx_b1 = (*ib)*3 -3;
 
-	for (i=0; i<4; i++)
+	for (i=0; i<3; i++)
 	{
 		mpz_set(temp1,coord_gmp[idx_a1+i]);
 		mpz_set(temp2,coord_gmp[idx_b1+i]);
 		mpz_sub(Dab[i],temp1,temp2);
 	}
 
-	mpz_set(ra_mp,radius_gmp[idx_a1]);
-	mpz_set(rb_mp,radius_gmp[idx_b1]);
+	idx_a2 = (*ia)-1; idx_b2 = (*ib)-1;
+
+	mpz_set(ra_mp,radius_gmp[idx_a2]);
+	mpz_set(rb_mp,radius_gmp[idx_b2]);
 
 	mpz_mul(temp1, Dab[0],Dab[0]);
 	mpz_mul(temp2, Dab[1],Dab[1]);
