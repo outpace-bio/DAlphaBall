@@ -1,6 +1,6 @@
-# Conda Build Recipes
 
-A  build recipe and associated scripting components for building conda
+# Conda Build Recipes
+DAlphaBall is distributed under the GNU LGPL. A  build recipe and associated scripting components for building conda
 packages for Rosetta components. These recipes can be used to generate
 the DAlphaBall executable.
 
