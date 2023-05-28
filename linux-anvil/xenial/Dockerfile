@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM --platform=linux/amd64 ubuntu:xenial
 
 # Set an encoding to make things work smoothly.
 ENV LANG en_US.UTF-8
