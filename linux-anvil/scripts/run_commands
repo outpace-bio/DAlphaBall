@@ -23,16 +23,16 @@ curl -s -L https://repo.continuum.io/miniconda/$condapkg > miniconda.sh && \
     rm miniconda.sh
 
 echo "conda =4.6" >> /opt/conda/conda-meta/pinned && \
-    export PATH=/opt/conda/bin:$PATH && \
+    export PATH="/opt/conda/bin:${PATH}" && \
     conda config --set show_channel_urls True && \
     conda update --all --yes && \
     conda clean -tipy
 
 # Install conda build and deployment tools.
 export PATH="/opt/conda/bin:${PATH}" && \
-    conda install --yes --quiet conda-build conda-verify anaconda-client jinja2 setuptools && \
+    conda install --yes --quiet conda-build=3.22.0 conda-verify anaconda-client jinja2 setuptools && \
     conda install --yes git && \
-    conda clean -tipsy
+    conda clean -tipy
 
 # Install docker tools
 export PATH="/opt/conda/bin:${PATH}" && \
@@ -42,7 +42,7 @@ export PATH="/opt/conda/bin:${PATH}" && \
     conda install --yes conda-forge::tini && \
     export CONDA_TINI_INFO=( `conda list tini | grep tini` ) && \
     echo "tini ${CONDA_TINI_INFO[1]}" >> /opt/conda/conda-meta/pinned && \
-    conda clean -tipsy
+    conda clean -tipy
 
 # Lucky group gets permission to write in the conda dir
 groupadd -g 32766 lucky
