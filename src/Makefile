@@ -3,15 +3,14 @@ DIR=.
 
 CPU=gcc
 NAMEFUL1=$(DIR)/$(NAME1).$(CPU)
-FFLAGS=-c -O3 -x f77-cpp-input -fsecond-underscore
 LIBRARIES=-lgmp -lm -lgfortran
 LD=$(CC) # use c compiler as frontend for linker
 
 .c.o :
-	$(CC) -c -O3 $(CFLAGS) $(INCS) $<
+	$(CC) -c $(CFLAGS) -O3 -fcommon $(INCS) $<
 
 .f.o :
-	$(FC) $(FFLAGS) $<
+	$(FC) -c $(FFLAGS) -O3 -x f77-cpp-input -fsecond-underscore $<
 
 OBJECTS1 = \
 $(NAME1).o \
