@@ -53,4 +53,4 @@ docker run \
            -e HOST_USER_ID=$HOST_USER_ID \
            -e UPLOAD_PACKAGES=$UPLOAD_PACKAGES \
            $DOCKER_IMAGE \
-           bash -c 'cd /home/conda/root/dalphaball && conda build recipes --croot /home/conda/build'
+           bash -c 'cd /home/conda/root/dalphaball && conda build recipes -c conda-forge --croot /home/conda/build'
