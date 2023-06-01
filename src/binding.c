@@ -51,7 +51,7 @@
 			double *surf, double *vol, double ballwsurf[MAX_ATOM], double ballwvol[MAX_ATOM], 
 			double dwsurf[3*MAX_ATOM], double dwvol[3*MAX_ATOM] );
 
-	extern void F77Name2(cavballs)( double *x, double *y, double *z, double *r, int *ncav );
+	extern void F77Name1(cavballs)( double *x, double *y, double *z, double *r, int *ncav );
 
 void get_surf_vol( int npoints, double *coords, double *radius, double *surf_out, double *vol_out ) {
 	int i;
@@ -346,7 +346,7 @@ void get_cavballs( int npoints, double *coords, double *radius ) {
 	double *z = malloc((MAX_TETRA)*sizeof(double));
 	double *r = malloc((MAX_TETRA)*sizeof(double));
 	int ncav = 0;
-	cavballs_( x, y, z, r, &ncav );
+	F77Name1(cavballs)( x, y, z, r, &ncav );
 	
 	printf("%d\n",ncav);
 	for( i = 0; i<ncav; i++ ) {
