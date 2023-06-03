@@ -28,8 +28,19 @@ conda_build:
 CONDA_BUILD_SYSROOT:
   - /opt/MacOSX10.10.sdk # [osx]
 ```
-5. Use `conda build recipes --croot=<output dir>` to build the `dalphaball`
-   conda package.
+5. Create and activate a new conda environment (or activate an existing conda environment), 
+installing `conda-build` and `pyrosetta` packages. For older versions of conda (<=4.6), one may need to install
+`conda-build<=3.22.0` to avoid an `ImportError` at the next stage.
+6. Navigate to this cloned repository directory, and use `conda build recipes -c conda-forge --croot=<output dir>`
+to build the `dalphaball` conda package.
+7. In order to use the `dalphaball` package with `pyrosetta`, then use `conda install dalphaball -c <output dir>`
+to install `dalphaball` into the active conda environment. Optionally, it may be installed into any conda environment
+at this stage. 
+8. The `dalphaball` executable is then located in the conda environment `bin` directory, usually located here:
+`~/opt/anaconda3/envs/MYENV/bin/dalphaball`
+9. Initialize PyRosetta with the following flag: `-holes:dalphaball ~/opt/anaconda3/envs/MYENV/bin/dalphaball`
+10. Enable usage of dalphaball in the `BuriedUnsatHbonds` filter with the `dalphaball_sasa="1"` option. The `Holes`
+filter automatically uses it.
 
 ## Build Layout
 
