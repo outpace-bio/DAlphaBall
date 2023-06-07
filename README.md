@@ -37,12 +37,12 @@ to build the `dalphaball` conda package.
 to install `dalphaball` into the active conda environment. Optionally, it may be installed into any conda environment
 at this stage. 
 8. The `dalphaball` executable is then located in the active conda environment `bin` directory, usually located here:
-`~/opt/anaconda3/envs/MYENV/bin/dalphaball`
+`~/opt/anaconda3/envs/MYENV/bin/dalphaball`.
 9. If using Jupyter notebooks, launch `jupyter notebook` from the active conda environment. The conda environment 
 `bin` directory should be in `$PATH`, so one may initialize PyRosetta with the following flag: `-holes:dalphaball dalphaball`.
 If `jupyter notebook` is launched from a different conda environment, make sure `ipykernel` is installed into the active conda
-environment and registered for use as a kernel on the Jupyter server, then specify the full path to the `dalphaball` executable
-during PyRosetta initialization: `-holes:dalphaball ~/opt/anaconda3/envs/MYENV/bin/dalphaball`
+environment and the active conda environment registered for use as a kernel on the Jupyter server, then specify the full path 
+to the `dalphaball` executable during PyRosetta initialization: `-holes:dalphaball ~/opt/anaconda3/envs/MYENV/bin/dalphaball`.
 10. Enable usage of dalphaball in the `BuriedUnsatHbonds` filter with the `dalphaball_sasa="1"` option. The `Holes`
 filter automatically uses it.
 
